@@ -1,12 +1,17 @@
-import { useSelector } from "react-redux";
-import { selectContacts } from "../../redux/contactsSlice";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import css from "./App.module.css";
 import ContactForm from "../ContactForm/ContactForm";
+import { useEffect } from "react";
+import { fetchContacts } from "../../redux/contactsOps";
+import { useDispatch } from "react-redux";
 
 const App = () => {
-  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={css.container}>
@@ -16,7 +21,7 @@ const App = () => {
       <SearchBox />
       <hr className={css.line}></hr>
       <h2>Contacts</h2>
-      <ContactList contacts={contacts} />
+      <ContactList />
     </div>
   );
 };
