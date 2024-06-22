@@ -1,7 +1,6 @@
 import css from "./Contact.module.css";
 import { RiUser3Fill } from "react-icons/ri";
 import { BsTelephoneFill } from "react-icons/bs";
-import { deleteContact } from "../../redux/contactsOps";
 
 const Contact = ({ contact }) => {
   return (
@@ -16,9 +15,7 @@ const Contact = ({ contact }) => {
           {contact.number}
         </p>
       </div>
-      <button className={css.btn} onClick={deleteContact}>
-        Delete
-      </button>
+      <button className={css.btn}>Delete</button>
     </div>
   );
 };
